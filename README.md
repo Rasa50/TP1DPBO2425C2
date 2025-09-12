@@ -78,81 +78,49 @@ Penjelasan Design
 
 flowCode
 
-[Mulai]
-   |
-   v
-[Tampilkan Menu Utama]
-   |
-   v
-+--------------------------+
-| Pilih Menu (1 - 7, 0) ? |
-+--------------------------+
-   |
-   +-- (1) Tambah Toko ----------------------+
-   |                                         |
-   |--> [Input data toko (nama, pemilik,     |
-   |     alamat, no izin)]                   |
-   |--> [Simpan ke daftarToko[]]             |
-   |--> [Kembali ke Menu] <------------------+
-   |
-   +-- (2) Tambah Produk --------------------+
-   |                                         |
-   |--> [Tampilkan daftar toko]              |
-   |--> [Pilih toko]                         |
-   |--> [Input data produk (nama, merk,      |
-   |     no seri, deskripsi, harga, stok)]   |
-   |--> [Simpan ke listProduk[] toko]        |
-   |--> [Kembali ke Menu] <------------------+
-   |
-   +-- (3) Lihat Toko / Produk --------------+
-   |                                         |
-   |--> [Pilih mode: semua / spesifik]       |
-   |     |                                   |
-   |     +-- Semua --> [Tampilkan semua toko |
-   |     |   dan produk]                     |
-   |     |                                   |
-   |     +-- Spesifik --> [Pilih toko]       |
-   |                        |                |
-   |                        +-- Semua produk |
-   |                        |   --> [Tampil] |
-   |                        |                |
-   |                        +-- Produk spesifik
-   |                            --> [Tampil] |
-   |--> [Kembali ke Menu] <------------------+
-   |
-   +-- (4) Edit Toko ------------------------+
-   |                                         |
-   |--> [Pilih toko]                         |
-   |--> [Pilih field (nama/pemilik/alamat/   |
-   |     izin)]                              |
-   |--> [Update data]                        |
-   |--> [Kembali ke Menu] <------------------+
-   |
-   +-- (5) Edit Produk ----------------------+
-   |                                         |
-   |--> [Pilih toko]                         |
-   |--> [Pilih produk]                       |
-   |--> [Pilih field (nama, merk, no seri,   |
-   |     deskripsi, harga, stok)]            |
-   |--> [Update data]                        |
-   |--> [Kembali ke Menu] <------------------+
-   |
-   +-- (6) Hapus Toko -----------------------+
-   |                                         |
-   |--> [Pilih toko]                         |
-   |--> [Hapus dari daftarToko[]]            |
-   |--> [Shift array toko]                   |
-   |--> [Kembali ke Menu] <------------------+
-   |
-   +-- (7) Hapus Produk ---------------------+
-   |                                         |
-   |--> [Pilih toko]                         |
-   |--> [Pilih produk]                       |
-   |--> [Hapus dari listProduk[]]            |
-   |--> [Shift array produk]                 |
-   |--> [Kembali ke Menu] <------------------+
-   |
-   +-- (0) Keluar ---------------------------+
-          |
-          v
-       [Selesai]
+1. Mulai
+2. Tampilkan Menu Utama
+    - Pilih Menu (1 - 7, 0) ?
+        - (1) Tambah Toko
+            --> [Input data toko (nama, pemilik, alamat, no izin)]
+            --> [Simpan ke daftarToko[]]
+            --> [Kembali ke Menu]
+        - (2) Tambah Produk
+            --> [Tampilkan daftar toko]
+            --> [Pilih toko]
+            --> [Input data produk (nama, merk, no seri, deskripsi, harga, stok)]
+            --> [Simpan ke listProduk[] toko]
+            --> [Kembali ke Menu]
+        - (3) Lihat Toko / Produk
+            --> [Pilih mode: semua / spesifik]
+                - Semua --> [Tampilkan semua toko dan produk]
+                - Spesifik --> [Pilih toko]
+                    - Semua produk
+                        --> [Tampil]
+                    - Produk spesifik
+                        --> [Tampil] 
+            --> [Kembali ke Menu]
+        - (4) Edit Toko
+            --> [Pilih toko]
+            --> [Pilih field (nama/pemilik/alamat/izin)]
+            --> [Update data]
+            --> [Kembali ke Menu]
+        - (5) Edit Produk
+            --> [Pilih toko]
+            --> [Pilih produk]
+            --> [Pilih field (nama, merk, no seri, deskripsi, harga, stok)]
+            --> [Update data]
+            --> [Kembali ke Menu]
+        - (6) Hapus Toko
+            --> [Pilih toko]
+            --> [Hapus dari daftarToko[]]
+            --> [Shift array toko]
+            --> [Kembali ke Menu]
+        - (7) Hapus Produk 
+            --> [Pilih toko]
+            --> [Pilih produk]
+            --> [Hapus dari listProduk[]]
+            --> [Shift array produk]
+            --> [Kembali ke Menu]
+        - (0) Keluar
+3. Selesai
