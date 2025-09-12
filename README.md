@@ -58,24 +58,6 @@ Penjelasan Design
     Jika hapus, array digeser untuk menutup celah data.
     Selalu kembali ke menu utama sampai user pilih 0 (Keluar).
 
-
-(from GPT)
-5. Kelebihan Desain
-
-    Rapi: ada pemisahan antara class toko/produk dan program utama.
-    OOP: atribut dibuat private dengan getter/setter.
-    Menu interaktif: CRUD (Create, Read, Update, Delete) sudah lengkap.
-    Nested class Produk di dalam TokoElektronik sesuai konsep real-world.
-
-6. Kekurangan / Saran Pengembangan
-
-    jumlahProduk belum diinisialisasi di constructor → bisa bikin bug kalau nilainya acak.
-    Input cin >> tidak bisa baca spasi (contoh alamat toko panjang). Lebih baik pakai getline().
-    Bisa ditambah validasi (misalnya: kalau user pilih toko ke-5 padahal baru ada 2 toko).
-    Bisa dikembangkan pakai vector biar gak ribet geser array.
-
-
-
 flowCode
 
 1. Mulai
