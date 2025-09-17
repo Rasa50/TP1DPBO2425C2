@@ -4,12 +4,6 @@ using namespace std;
 
 class TokoElektronik {
 private:
-    // Data toko
-    string nama;
-    string pemilik;
-    string alamat;
-    string noIzinUsaha;
-
     // Data produk
     string namaProduk;
     string merk;
@@ -21,10 +15,6 @@ private:
 public:
     // Constructor
     TokoElektronik() {
-        nama = "-";
-        pemilik = "-";
-        alamat = "-";
-        noIzinUsaha = "-";
         namaProduk = "-";
         merk = "-";
         noSeri = "-";
@@ -32,19 +22,6 @@ public:
         harga = "-";
         stok = 0;
     }
-
-    // === Setter & Getter Toko ===
-    void setNamatoko(string n) { this->nama = n; }
-    string getNamaToko() { return this->nama; }
-
-    void setAlamatToko(string a) { this->alamat = a; }
-    string getAlamatToko() { return this->alamat; }
-
-    void setPemiliktoko(string p) { this->pemilik = p; }
-    string getPemilikToko() { return this->pemilik; }
-
-    void setNoIzinUsahaToko(string noIzin) { this->noIzinUsaha = noIzin; }
-    string getNoIzinToko() { return this->noIzinUsaha; }
 
     // === Setter & Getter Produk ===
     void setNamaProduk(string np) { this->namaProduk = np; }
@@ -65,14 +42,7 @@ public:
     void setStok(int s) { this->stok = s; }
     int getStok() { return this->stok; }
 
-    // === View Data ===
-    void viewToko() {
-        cout << "Nama Toko      : " << nama << endl;
-        cout << "Alamat Toko    : " << alamat << endl;
-        cout << "Pemilik        : " << pemilik << endl;
-        cout << "No Izin Usaha  : " << noIzinUsaha << endl;
-    }
-
+    // === View Produk ===
     void viewProduk() {
         cout << "Nama Produk : " << namaProduk << endl;
         cout << "Merk        : " << merk << endl;

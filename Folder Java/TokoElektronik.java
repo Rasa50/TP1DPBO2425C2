@@ -1,28 +1,63 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-
 class TokoElektronik {
-    // Data toko
-    String nama = "-";
-    String pemilik = "-";
-    String alamat = "-";
-    String noIzinUsaha = "-";
     // Data produk
-    String namaProduk = "-";
-    String merk = "-";
-    String noSeri = "-";
-    String deskripsi = "-";
-    String harga = "-";
-    int stok = 0;
+    private String namaProduk = "-";
+    private String merk = "-";
+    private String noSeri = "-";
+    private String deskripsi = "-";
+    private String harga = "-";
+    private int stok = 0;
 
-    void viewToko() {
-        System.out.println("Nama Toko     : " + nama);
-        System.out.println("Pemilik       : " + pemilik);
-        System.out.println("Alamat        : " + alamat);
-        System.out.println("No Izin Usaha : " + noIzinUsaha);
+    // --- Getter & Setter ---
+    public String getNamaProduk() {
+        return namaProduk;
     }
 
-    void viewProduk() {
+    public void setNamaProduk(String namaProduk) {
+        this.namaProduk = namaProduk;
+    }
+
+    public String getMerk() {
+        return merk;
+    }
+
+    public void setMerk(String merk) {
+        this.merk = merk;
+    }
+
+    public String getNoSeri() {
+        return noSeri;
+    }
+
+    public void setNoSeri(String noSeri) {
+        this.noSeri = noSeri;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public void setDeskripsi(String deskripsi) {
+        this.deskripsi = deskripsi;
+    }
+
+    public String getHarga() {
+        return harga;
+    }
+
+    public void setHarga(String harga) {
+        this.harga = harga;
+    }
+
+    public int getStok() {
+        return stok;
+    }
+
+    public void setStok(int stok) {
+        this.stok = stok;
+    }
+
+    // --- Method tampil data produk ---
+    public void viewProduk() {
         System.out.println("Nama Produk   : " + namaProduk);
         System.out.println("Merk          : " + merk);
         System.out.println("No Seri       : " + noSeri);
@@ -31,13 +66,4 @@ class TokoElektronik {
         System.out.println("Stok          : " + stok);
         System.out.println();
     }
-
-    public String getNamaToko() {
-        return this.nama;
-    }
-
-    public String getNamaProduk() {
-        return this.namaProduk;
-    }
-
 }
