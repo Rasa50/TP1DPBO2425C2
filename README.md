@@ -169,4 +169,4 @@ delete
 ![hapus](Folder%20Dokumentasi/Php/hapus.png)
 
 Foto
-![hapus](Folder%20Dokumentasi/Php/nambahFoto.png)  
+![foto](Folder%20Dokumentasi/Php/nambahFoto.png)  
