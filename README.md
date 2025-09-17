@@ -3,106 +3,123 @@
 saya Rafi Ahmad Al Farisi dengan NIM 2409829
 mengerjakan TP 1 dalam mata kuliah Design Pemrograman Berbasis Object
 untuk keberkahannya maka saya tidak akan melakukan kecurangan
-sepertu yang telah di spesifikasikan Aamiin.
+seperti yang telah di spesifikasikan Aamiin.
 
 
 Penjelasan Design
-
 1. Struktur Kelas
-    Class TokoElektronik
-    Atribut (private): nama, pemilik, alamat, noIzinUsaha → identitas toko.
-    
-    Nested Class Produk: Atribut: namaproduk, merk, noSeri, deskripsi, harga, stok.
-    Semua atribut private → diakses lewat getter & setter.
-    
-    Method: viewProduk() untuk menampilkan detail produk.
 
-    Atribut lain:
+    Class           : TokoElektronik
+    Atribut         : (private)
+    Identitas toko  : nama, pemilik, alamat, noIzinUsaha.
+    Data produk     : namaProduk, merk, noSeri, deskripsi, harga, stok.
 
-    Produk listProduk[50] → array produk dalam 1 toko (maksimal 50).
-    int jumlahProduk → pencatat jumlah produk aktif.
-
-    Method utama:
-    ViewToko() → menampilkan detail toko.
-    set... / get... → setter-getter untuk toko.
-    tambahProduk(Produk p) → menambah produk baru.
-    tampilkanProduk() → menampilkan semua produk dalam toko.
+    -> Method
+        set... / get... : setter dan getter untuk semua atribut.
+        viewToko()      : menampilkan detail data toko.
+        viewProduk()    : menampilkan detail data produk.
 
 2. Struktur Program Utama (Main.cpp)
 
-    Ada array TokoElektronik daftarToko[10] → maksimal 10 toko.
-    Variabel global untuk input data toko & produk.
-    Loop while → menampilkan menu utama:
-        Tambah Toko → buat objek toko baru dan isi atributnya.
-        Tambah Produk → pilih toko → input produk → simpan ke array produk toko tersebut.
-        Lihat Toko/Produk
-            Mode 1: tampilkan semua toko + semua produk.
-            Mode 2: pilih toko → tampilkan produk (semua atau spesifik).
-        Edit Toko → pilih toko, edit field tertentu (nama, alamat, pemilik, izin).
-        Edit Produk → pilih toko → pilih produk → edit field tertentu (nama, merk, stok, dll).
-        Hapus Toko → pilih toko, lalu array bergeser (data toko dihapus).
-        Hapus Produk → pilih toko, pilih produk, lalu array produk bergeser.
-        Keluar → berhenti dari program.
+    Ada array TokoElektronik daftar[100]    : maksimal menyimpan 100 data toko + produk.
+    Variabel input                          : string untuk data teks (nama, merk, deskripsi, dll) dan integer untuk stok.
+    Loop while                              : menampilkan menu utama dengan pilihan:
+    Tambah Data                             : isi semua data toko + produk, simpan ke daftar[jumlahData].
+    Lihat Data                              : tampilkan semua data toko & produk yang ada.
+    Edit Data                               : pilih data ke berapa, lalu pilih field mana yang mau diubah (nama toko, pemilik, alamat, produk, harga, stok, dll).
+    Hapus Data                              : pilih data ke berapa, lalu hapus dengan cara menggeser array (shift array).
+    Cari Data                               : pilih kriteria (nama toko / nama produk), input kata kunci, cari dalam array (substring search).
+    Keluar                                  : hentikan program.
 
 3. Desain Data
 
-    Tingkat 1: Program menyimpan banyak toko (daftarToko[10]).
-    Tingkat 2: Tiap toko bisa punya banyak produk (listProduk[50]).
-    Hubungan: TokoElektronik memiliki (has-a) Produk.
+    Level 1 : Array daftar[100] → menyimpan banyak object TokoElektronik.
+    Level 2 : Tiap object TokoElektronik menyimpan detail 1 toko + 1 produk.
+    Relasi  : Program ini lebih ke array of object, bukan has-a seperti contoh nested class.
 
 4. Alur Utama
+    Program mulai, tampilkan menu utama.
+    User pilih opsi menu:
+    Tambah -> input semua data -> simpan ke daftar[jumlahData] -> jumlahData++.
+    Lihat -> looping dari 0 sampai jumlahData-1, panggil viewToko() + viewProduk().
+    Edit -> tampilkan semua data -> pilih index data -> pilih field -> setter untuk update nilai.
+    Hapus -> pilih index data -> lakukan shift array -> jumlahData--.
+    Cari -> Pilih kriteria → Input kata kunci → Looping data → Cocok? → tampilkan / kalau kosong → tampilkan pesan gagal → balik ke menu.
+    Keluar -> set stop = 1, program berhenti.
+    Setelah setiap operasi (selain keluar), kembali ke menu utama.
 
-    User pilih menu.
-    Program minta input atau menampilkan data sesuai case.
-    Jika tambah/edit, data dimasukkan ke dalam array (daftarToko atau listProduk).
-    Jika hapus, array digeser untuk menutup celah data.
-    Selalu kembali ke menu utama sampai user pilih 0 (Keluar).
-
-flowCode
+Flow Code
 
 1. Mulai
 2. Tampilkan Menu Utama
-    - Pilih Menu (1 - 7, 0) ?
-        - (1) Tambah Toko
-            --> [Input data toko (nama, pemilik, alamat, no izin)]
-            --> [Simpan ke daftarToko[]]
-            --> [Kembali ke Menu]
-        - (2) Tambah Produk
-            --> [Tampilkan daftar toko]
-            --> [Pilih toko]
-            --> [Input data produk (nama, merk, no seri, deskripsi, harga, stok)]
-            --> [Simpan ke listProduk[] toko]
-            --> [Kembali ke Menu]
-        - (3) Lihat Toko / Produk
-            --> [Pilih mode: semua / spesifik]
-                - Semua --> [Tampilkan semua toko dan produk]
-                - Spesifik --> [Pilih toko]
-                    - Semua produk
-                        --> [Tampil]
-                    - Produk spesifik
-                        --> [Tampil] 
-            --> [Kembali ke Menu]
-        - (4) Edit Toko
-            --> [Pilih toko]
-            --> [Pilih field (nama/pemilik/alamat/izin)]
-            --> [Update data]
-            --> [Kembali ke Menu]
-        - (5) Edit Produk
-            --> [Pilih toko]
-            --> [Pilih produk]
-            --> [Pilih field (nama, merk, no seri, deskripsi, harga, stok)]
-            --> [Update data]
-            --> [Kembali ke Menu]
-        - (6) Hapus Toko
-            --> [Pilih toko]
-            --> [Hapus dari daftarToko[]]
-            --> [Shift array toko]
-            --> [Kembali ke Menu]
-        - (7) Hapus Produk 
-            --> [Pilih toko]
-            --> [Pilih produk]
-            --> [Hapus dari listProduk[]]
-            --> [Shift array produk]
-            --> [Kembali ke Menu]
-        - (0) Keluar
+    -> Pilih Menu (1–4, 0)?
+        -> (1) Tambah Data
+            -> Input data toko + produk.
+            -> Simpan ke daftar[jumlahData].
+            -> jumlahData++.
+            -> Kembali ke Menu.
+        -> (2) Lihat Data
+            -> Jika kosong, tampil pesan "Belum ada data".
+            -> Jika ada, tampilkan semua isi array dengan viewToko() + viewProduk().
+            -> Kembali ke Menu.
+        -> (3) Edit Data
+            -> Tampilkan semua data.
+            -> Pilih nomor data.
+            -> Pilih field (nama toko, pemilik, alamat, produk, merk, no seri, deskripsi, harga, stok).
+            -> Update nilai dengan setter.
+            -> Kembali ke Menu.
+        -> (4) Hapus Data
+            -> Tampilkan semua data.
+            -> Pilih nomor data.
+            -> Geser array (shift) untuk menghapus data.
+            -> jumlahData--.
+            -> Kembali ke Menu.
+        -> (5) Cari Data (NEW)
+            -> Pilih kriteria pencarian: Nama Toko / Nama Produk
+            -> Input kata kunci (string)
+            -> Looping array
+                -> tampilkan data yang cocok (case-insensitive / substring match)
+            -> Jika tidak ada yang cocok 
+                ->tampilkan "Data tidak ditemukan"
+            -> Kembali ke Menu
+        -> (0) Keluar
+            -> Set stop = 1.
 3. Selesai
+
+
+
+1. C++
+
+![create]("Folder Dokumentasi/C++/create.png")
+![view]("Folder Dokumentasi/C++/view.png")
+![beforeAndEdit]("Folder Dokumentasi/C++/beforeAndEdit.png")
+![afterEdit]("Folder Dokumentasi/C++/afterEdit.png")
+![listBuatSearch]("Folder Dokumentasi/C++/listBuatSearch.png")
+![search]("Folder Dokumentasi/C++/search.png")
+![delete]("Folder Dokumentasi/C++/delete.png")
+
+2. Python
+
+![create]("Folder Dokumentasi/Python/create.png")
+![show(view)]("Folder Dokumentasi/Python/show(view).png")
+![edit]("Folder Dokumentasi/Python/edit.png")
+![afterEdit]("Folder Dokumentasi/Python/afterEdit.png")
+![search]("Folder Dokumentasi/Python/search.png")
+![delete]("Folder Dokumentasi/Python/delete.png")
+
+3. Java
+
+![create]("Folder Dokumentasi/Java/create.png")
+![show]("Folder Dokumentasi/Java/show.png")
+![edit]("Folder Dokumentasi/Java/edit.png")
+![listSearch]("Folder Dokumentasi/Java/listSearch.png")
+![search]("Folder Dokumentasi/Java/search.png")
+![delete]("Folder Dokumentasi/Java/delete.png")
+
+3. Php
+
+![create]("Folder Dokumentasi/Php/create.png")
+![update]("Folder Dokumentasi/Php/update.png")
+![listSearch]("Folder Dokumentasi/Php/listSearch.png")
+![search]("Folder Dokumentasi/Php/search.png")
+![hapus]("Folder Dokumentasi/Php/hapus.png")

@@ -1,52 +1,43 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
-class Produk {
-    String nama, merk, noSeri, deskripsi, harga;
-    int stok;
+class TokoElektronik {
+    // Data toko
+    String nama = "-";
+    String pemilik = "-";
+    String alamat = "-";
+    String noIzinUsaha = "-";
+    // Data produk
+    String namaProduk = "-";
+    String merk = "-";
+    String noSeri = "-";
+    String deskripsi = "-";
+    String harga = "-";
+    int stok = 0;
 
-    Produk(String nama, String merk, String noSeri, String deskripsi, String harga, int stok) {
-        this.nama = nama; this.merk = merk; this.noSeri = noSeri;
-        this.deskripsi = deskripsi; this.harga = harga; this.stok = stok;
+    void viewToko() {
+        System.out.println("Nama Toko     : " + nama);
+        System.out.println("Pemilik       : " + pemilik);
+        System.out.println("Alamat        : " + alamat);
+        System.out.println("No Izin Usaha : " + noIzinUsaha);
     }
 
     void viewProduk() {
-        System.out.println("Nama Produk : " + nama);
-        System.out.println("Merk        : " + merk);
-        System.out.println("No Seri     : " + noSeri);
-        System.out.println("Deskripsi   : " + deskripsi);
-        System.out.println("Harga       : Rp " + harga);
-        System.out.println("Stok        : " + stok + "\n");
-    }
-}
-
-class TokoElektronik {
-    String nama, pemilik, alamat, noIzin;
-    ArrayList<Produk> listProduk = new ArrayList<>();
-
-    TokoElektronik(String nama, String pemilik, String alamat, String noIzin) {
-        this.nama = nama; this.pemilik = pemilik;
-        this.alamat = alamat; this.noIzin = noIzin;
+        System.out.println("Nama Produk   : " + namaProduk);
+        System.out.println("Merk          : " + merk);
+        System.out.println("No Seri       : " + noSeri);
+        System.out.println("Deskripsi     : " + deskripsi);
+        System.out.println("Harga         : Rp " + harga);
+        System.out.println("Stok          : " + stok);
+        System.out.println();
     }
 
-    void viewToko() {
-        System.out.println("Nama Toko      : " + nama);
-        System.out.println("Alamat Toko    : " + alamat);
-        System.out.println("Pemilik        : " + pemilik);
-        System.out.println("No Izin Usaha  : " + noIzin + "\n");
+    public String getNamaToko() {
+        return this.nama;
     }
 
-    void tambahProduk(Produk p) {
-        listProduk.add(p);
+    public String getNamaProduk() {
+        return this.namaProduk;
     }
 
-    void tampilkanProduk() {
-        if (listProduk.isEmpty()) {
-            System.out.println("Belum ada produk!");
-        } else {
-            for (int i = 0; i < listProduk.size(); i++) {
-                System.out.println("Produk ke-" + (i+1) + ":");
-                listProduk.get(i).viewProduk();
-            }
-        }
-    }
 }
