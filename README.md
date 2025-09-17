@@ -166,4 +166,7 @@ search
 ![search](Folder%20Dokumentasi/Php/search.png)  
 
 delete
-![hapus](Folder%20Dokumentasi/Php/hapus.png)  
+![hapus](Folder%20Dokumentasi/Php/hapus.png)
+
+Foto
+![hapus](Folder%20Dokumentasi/Php/nambahFoto.png)  

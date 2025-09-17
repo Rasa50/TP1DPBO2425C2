@@ -4,12 +4,14 @@ class TokoElektronik {
     private $pemilik;
     private $alamat;
     private $noIzinUsaha;
+
     private $namaProduk;
     private $merk;
     private $noSeri;
     private $deskripsi;
     private $harga;
     private $stok;
+    private $gambar; // NEW
 
     public function __construct() {
         $this->nama = "-";
@@ -22,6 +24,7 @@ class TokoElektronik {
         $this->deskripsi = "-";
         $this->harga = "-";
         $this->stok = 0;
+        $this->gambar = "";
     }
 
     // === Setter & Getter Toko ===
@@ -56,6 +59,10 @@ class TokoElektronik {
     public function setStok($s) { $this->stok = $s; }
     public function getStok() { return $this->stok; }
 
+    // === Setter & Getter Gambar ===
+    public function setGambar($g) { $this->gambar = $g; }
+    public function getGambar() { return $this->gambar; }
+
     // === View Data ===
     public function viewToko() {
         return "
@@ -67,14 +74,20 @@ class TokoElektronik {
     }
 
     public function viewProduk() {
-        return "
+        $out = "
         Nama Produk : {$this->namaProduk}<br>
         Merk        : {$this->merk}<br>
         No Seri     : {$this->noSeri}<br>
         Deskripsi   : {$this->deskripsi}<br>
         Harga       : Rp {$this->harga}<br>
-        Stok        : {$this->stok}<br><br>
+        Stok        : {$this->stok}<br>
         ";
+
+        if (!empty($this->gambar)) {
+            $out .= "<img src='{$this->gambar}' alt='Gambar Produk' width='120'><br>";
+        }
+
+        return $out;
     }
 }
 ?>

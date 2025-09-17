@@ -2,7 +2,7 @@
 session_start();
 include "TokoElektronik.php";
 
-// Array data dalam session (mirip array daftar[100] di C++)
+// Array data dalam session
 if (!isset($_SESSION['daftar'])) {
     $_SESSION['daftar'] = [];
 }
@@ -20,6 +20,17 @@ if (isset($_POST['tambah'])) {
     $t->setDeskripsi($_POST['deskripsi']);
     $t->setHarga($_POST['harga']);
     $t->setStok($_POST['stok']);
+
+    // Handle upload gambar
+    if (!empty($_FILES['gambar']['name'])) {
+        $targetDir = "uploads/";
+        if (!is_dir($targetDir)) {
+            mkdir($targetDir, 0777, true);
+        }
+        $targetFile = $targetDir . basename($_FILES["gambar"]["name"]);
+        move_uploaded_file($_FILES["gambar"]["tmp_name"], $targetFile);
+        $t->setGambar($targetFile);
+    }
 
     $_SESSION['daftar'][] = serialize($t);
 }
@@ -50,7 +61,7 @@ if (isset($_POST['update'])) {
 if (isset($_GET['hapus'])) {
     $index = $_GET['hapus'];
     unset($_SESSION['daftar'][$index]);
-    $_SESSION['daftar'] = array_values($_SESSION['daftar']); // rapihin index array
+    $_SESSION['daftar'] = array_values($_SESSION['daftar']);
 }
 ?>
 
@@ -61,7 +72,7 @@ if (isset($_GET['hapus'])) {
 </head>
 <body>
     <h2>Tambah Data</h2>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         Nama Toko: <input type="text" name="namatoko"><br>
         Pemilik: <input type="text" name="pemilik"><br>
         Alamat: <input type="text" name="alamat"><br>
@@ -72,8 +83,10 @@ if (isset($_GET['hapus'])) {
         Deskripsi: <input type="text" name="deskripsi"><br>
         Harga: <input type="text" name="harga"><br>
         Stok: <input type="number" name="stok"><br>
+        Gambar: <input type="file" name="gambar"><br>
         <input type="submit" name="tambah" value="Tambah">
     </form>
+
     <h2>Cari Data</h2>
     <form method="get">
         Cari berdasarkan:
@@ -85,7 +98,6 @@ if (isset($_GET['hapus'])) {
         <input type="submit" name="cari" value="Cari">
     </form>
 
-
     <h2>Daftar Data</h2>
     <?php
     if (empty($_SESSION['daftar'])) {
@@ -94,44 +106,58 @@ if (isset($_GET['hapus'])) {
         $keyword = isset($_GET['keyword']) ? strtolower($_GET['keyword']) : "";
         $by = isset($_GET['by']) ? $_GET['by'] : "";
 
+        echo "<table border='1' cellpadding='5' cellspacing='0'>";
+        echo "<tr>
+                <th>No</th>
+                <th>Nama Toko</th>
+                <th>Pemilik</th>
+                <th>Alamat</th>
+                <th>No Izin</th>
+                <th>Nama Produk</th>
+                <th>Merk</th>
+                <th>No Seri</th>
+                <th>Deskripsi</th>
+                <th>Harga</th>
+                <th>Stok</th>
+                <th>Gambar</th>
+                <th>Aksi</th>
+              </tr>";
+
         $found = false;
         foreach ($_SESSION['daftar'] as $i => $item) {
             $t = unserialize($item);
 
-            // cek filter jika ada pencarian
+            // Filter pencarian
             if (!empty($keyword)) {
-                if ($by == "namatoko" && strpos(strtolower($t->getNamatoko()), $keyword) === false) continue;
+                if ($by == "namatoko" && strpos(strtolower($t->getNamaToko()), $keyword) === false) continue;
                 if ($by == "namaproduk" && strpos(strtolower($t->getNamaProduk()), $keyword) === false) continue;
             }
 
             $found = true;
-            echo "<div style='border:1px solid #000; margin:5px; padding:5px;'>";
-            echo "<b>Data ke-".($i+1)."</b><br>";
-            echo $t->viewToko();
-            echo $t->viewProduk();
-
-            echo "
-            <form method='post'>
-                <input type='hidden' name='index' value='{$i}'>
-                <select name='field'>
-                    <option value='namatoko'>Nama Toko</option>
-                    <option value='pemilik'>Pemilik</option>
-                    <option value='alamat'>Alamat</option>
-                    <option value='noizin'>No Izin Usaha</option>
-                    <option value='namaproduk'>Nama Produk</option>
-                    <option value='merk'>Merk Produk</option>
-                    <option value='noseri'>No Seri Produk</option>
-                    <option value='deskripsi'>Deskripsi Produk</option>
-                    <option value='harga'>Harga Produk</option>
-                    <option value='stok'>Stok Produk</option>
-                </select>
-                <input type='text' name='value'>
-                <input type='submit' name='update' value='Update'>
-            </form>
-            <a href='?hapus={$i}'>Hapus</a>
-            ";
-            echo "</div>";
+            echo "<tr>";
+            echo "<td>".($i+1)."</td>";
+            echo "<td>".$t->getNamaToko()."</td>";
+            echo "<td>".$t->getPemilikToko()."</td>";
+            echo "<td>".$t->getAlamatToko()."</td>";
+            echo "<td>".$t->getNoIzinToko()."</td>";
+            echo "<td>".$t->getNamaProduk()."</td>";
+            echo "<td>".$t->getMerk()."</td>";
+            echo "<td>".$t->getNoSeri()."</td>";
+            echo "<td>".$t->getDeskripsi()."</td>";
+            echo "<td>".$t->getHarga()."</td>";
+            echo "<td>".$t->getStok()."</td>";
+            echo "<td>";
+            if ($t->getGambar() != "") {
+                echo "<img src='".$t->getGambar()."' width='100'>";
+            }
+            echo "</td>";
+            echo "<td>
+                    <a href='?hapus={$i}'>Hapus</a>
+                  </td>";
+            echo "</tr>";
         }
+
+        echo "</table>";
 
         if (!$found && !empty($keyword)) {
             echo "Data tidak ditemukan!";
