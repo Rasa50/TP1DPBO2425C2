@@ -90,36 +90,36 @@ Flow Code
 
 1. C++
 
-![create]("Folder Dokumentasi/C++/create.png")
-![view]("Folder Dokumentasi/C++/view.png")
-![beforeAndEdit]("Folder Dokumentasi/C++/beforeAndEdit.png")
-![afterEdit]("Folder Dokumentasi/C++/afterEdit.png")
-![listBuatSearch]("Folder Dokumentasi/C++/listBuatSearch.png")
-![search]("Folder Dokumentasi/C++/search.png")
-![delete]("Folder Dokumentasi/C++/delete.png")
+![create](Folder%20Dokumentasi/C++/create.png)  
+![view](Folder%20Dokumentasi/C++/view.png)  
+![beforeAndEdit](Folder%20Dokumentasi/C++/beforeAndEdit.png)  
+![afterEdit](Folder%20Dokumentasi/C++/afterEdit.png)  
+![listBuatSearch](Folder%20Dokumentasi/C++/listBuatSearch.png)  
+![search](Folder%20Dokumentasi/C++/search.png)  
+![delete](Folder%20Dokumentasi/C++/delete.png)  
 
 2. Python
 
-![create]("Folder Dokumentasi/Python/create.png")
-![show(view)]("Folder Dokumentasi/Python/show(view).png")
-![edit]("Folder Dokumentasi/Python/edit.png")
-![afterEdit]("Folder Dokumentasi/Python/afterEdit.png")
-![search]("Folder Dokumentasi/Python/search.png")
-![delete]("Folder Dokumentasi/Python/delete.png")
+![create](Folder%20Dokumentasi/Python/create.png)  
+![show(view)](Folder%20Dokumentasi/Python/show(view).png)  
+![edit](Folder%20Dokumentasi/Python/edit.png)  
+![afterEdit](Folder%20Dokumentasi/Python/afterEdit.png)  
+![search](Folder%20Dokumentasi/Python/search.png)  
+![delete](Folder%20Dokumentasi/Python/delete.png)  
 
 3. Java
 
-![create]("Folder Dokumentasi/Java/create.png")
-![show]("Folder Dokumentasi/Java/show.png")
-![edit]("Folder Dokumentasi/Java/edit.png")
-![listSearch]("Folder Dokumentasi/Java/listSearch.png")
-![search]("Folder Dokumentasi/Java/search.png")
-![delete]("Folder Dokumentasi/Java/delete.png")
+![create](Folder%20Dokumentasi/Java/create.png)  
+![show](Folder%20Dokumentasi/Java/show.png)  
+![edit](Folder%20Dokumentasi/Java/edit.png)  
+![listSearch](Folder%20Dokumentasi/Java/listSearch.png)  
+![search](Folder%20Dokumentasi/Java/search.png)  
+![delete](Folder%20Dokumentasi/Java/delete.png)  
 
-3. Php
+4. Php
 
-![create]("Folder Dokumentasi/Php/create.png")
-![update]("Folder Dokumentasi/Php/update.png")
-![listSearch]("Folder Dokumentasi/Php/listSearch.png")
-![search]("Folder Dokumentasi/Php/search.png")
-![hapus]("Folder Dokumentasi/Php/hapus.png")
+![create](Folder%20Dokumentasi/Php/create.png)  
+![update](Folder%20Dokumentasi/Php/update.png)  
+![listSearch](Folder%20Dokumentasi/Php/listSearch.png)  
+![search](Folder%20Dokumentasi/Php/search.png)  
+![hapus](Folder%20Dokumentasi/Php/hapus.png)  
